@@ -1,0 +1,81 @@
+plugins {
+	id 'application'
+	id 'checkstyle'
+	id 'org.springframework.boot' version '3.3.0'
+	id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'testTask'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '20'
+}
+
+compileJava {
+	options.release = 20
+}
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(20)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-amqp'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+	implementation "com.fasterxml.jackson.core:jackson-databind:2.16.0"
+	implementation "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.6.0"
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.amqp:spring-rabbit-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	implementation 'commons-io:commons-io:2.6'
+	implementation 'com.querydsl:querydsl-core:5.0.0'
+	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+
+	annotationProcessor "jakarta.persistence:jakarta.persistence-api:3.1.0"
+
+	runtimeOnly (
+			'io.jsonwebtoken:jjwt-impl:0.11.5',
+			'io.jsonwebtoken:jjwt-jackson:0.11.5',
+			'com.h2database:h2')
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
+
+application {
+	mainClass = 'testTask.demo.TestTaskApplication'
+}
+
+checkstyle {
+	toolVersion '10.12.1'
+}
+
+checkstyleMain.source = "src/main/java"
+checkstyleTest.source =  "src/test/java"

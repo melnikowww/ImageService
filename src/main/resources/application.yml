@@ -1,0 +1,48 @@
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    check-template-location: 'false'
+  datasource:
+    username: user
+    url: jdbc:h2:mem:demo;DB_CLOSE_ON_EXIT=FALSE
+    password: password
+  h2:
+    console:
+      enabled: 'true'
+      path:
+        settings:
+          web-allow-others: 'true'
+        nodeValue: /h2console/
+  jpa:
+    properties:
+      hibernate:
+        format_sql: 'true'
+    show-sql: 'true'
+  rabbitmq:
+    port: 5600
+  mail:
+    host: smtp.yandex.ru
+    port: 465
+    username: 'bo0t.s@yandex.ru'
+    password: 'sxiwkzhyvorvsoog'
+    test-connection: 'true'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+    sender:
+      email: 'bo0t.s@yandex.ru'
+      text: no-reply
+base:
+  url: '/api'
+server:
+  tomcat:
+    keep-alive-timeout: '120000'
+jwt:
+  secret: ${JWT_SECRET:YzNlNjVkZTQ3YjEyNWY5MWVmNWE2MjQyMzRiYmE4NTRmNGY0N2EzMDc3ZTIwYTUxNjM3ZGI0YTgyZWYyNjA0Mg==}
+
+
