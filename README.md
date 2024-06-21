@@ -2,7 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/56ad8a0c2aa86a03f993/maintainability)](https://codeclimate.com/github/melnikowww/testTask/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/56ad8a0c2aa86a03f993/test_coverage)](https://codeclimate.com/github/melnikowww/testTask/test_coverage)
 ## Описание:
-Проект позволяющий создать пользователя с двумя возможными ролями (USER и MODERATOR), загружать и скачивать изображения 
+Проект, позволяющий создать пользователя с двумя возможными ролями (USER и MODERATOR), загружать и скачивать изображения 
 в формате jpg/png. Предусмотрена авторизация и аутентификация. При регистрации, загрузке и скачивании пользователь 
 получает на email, указанный при регистрации, письмо с подтверждением операции и некоторыми данными о ней. Связь между микросервисами реализована посредством брокера сообщений RabbitMQ.
 ### Использованные технологии:
