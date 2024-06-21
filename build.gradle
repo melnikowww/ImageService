@@ -3,6 +3,7 @@ plugins {
 	id 'checkstyle'
 	id 'org.springframework.boot' version '3.3.0'
 	id 'io.spring.dependency-management' version '1.1.5'
+	id 'jacoco'
 }
 
 group = 'testTask'
@@ -30,6 +31,8 @@ configurations {
 
 repositories {
 	mavenCentral()
+	maven { url 'https://repo.spring.io/milestone' }
+	maven { url 'https://repo.spring.io/snapshot' }
 }
 
 dependencies {
@@ -70,7 +73,7 @@ tasks.named('test') {
 }
 
 application {
-	mainClass = 'testTask.demo.TestTaskApplication'
+	mainClass = 'task.demo.TestTaskApplication'
 }
 
 checkstyle {
@@ -79,3 +82,17 @@ checkstyle {
 
 checkstyleMain.source = "src/main/java"
 checkstyleTest.source =  "src/test/java"
+
+jacocoTestReport {
+	reports {
+		xml.required = true
+	}
+}
+
+test {
+	finalizedBy jacocoTestReport
+}
+jacocoTestReport {
+	dependsOn test
+}
+

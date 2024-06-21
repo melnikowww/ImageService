@@ -76,6 +76,7 @@ public class TestUtils {
 
     public void addFiles() {
         List<MultipartFile> files = new ArrayList<>();
+        User user = new User();
         files.add(new MockMultipartFile("files", "item1.jpg", MediaType.MULTIPART_FORM_DATA_VALUE, new byte[500]));
         files.add(new MockMultipartFile("files", "item2.jpg", MediaType.MULTIPART_FORM_DATA_VALUE, new byte[500]));
         files.add(new MockMultipartFile("files", "item3.jpg", MediaType.MULTIPART_FORM_DATA_VALUE, new byte[500]));
@@ -88,7 +89,7 @@ public class TestUtils {
 
                 File newFile = new File();
                 newFile.setName(file.getOriginalFilename());
-                newFile.setOwner(userRepository.findUserByEmail("bo0t.s@yandex.ru").orElseThrow());
+                newFile.setOwner(user);
                 newFile.setSize(file.getSize());
                 fileRepository.save(newFile);
             } catch (IOException e) {
